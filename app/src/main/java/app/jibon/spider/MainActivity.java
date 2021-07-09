@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
@@ -57,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     new CustomToast(getApplicationContext(), "Something went wrong");
                 }
+            }
+            if (id == R.id.nav_home){
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
             if (id == R.id.nav_exit){
                 finish();
