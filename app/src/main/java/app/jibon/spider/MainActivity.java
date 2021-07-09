@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_drawer);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Home - " + getString(R.string.dark_light_mode));
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, nav_drawer, toolbar, 0,0);
         nav_drawer.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
@@ -65,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
             if (id == R.id.nav_exit){
                 finish();
             }
-            navigationView.clearFocus();
-            nav_drawer.closeDrawers();
-            return false;
+            return true;
         });
     }
     public class CustomToast {
