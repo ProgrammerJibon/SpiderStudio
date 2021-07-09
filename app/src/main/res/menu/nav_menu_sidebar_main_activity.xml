@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_home"
+            android:title="@string/home"
+            android:icon="@drawable/ic_baseline_home_24"/>
+        <item android:id="@+id/profile"
+            android:title="@string/profile"
+            android:icon="@drawable/ic_outline_account_circle_24"/>
+        <item android:id="@+id/nav_messages"
+            android:title="@string/messages"
+            android:icon="@drawable/ic_baseline_message_24"/>
+        <item android:id="@+id/nav_night_mode"
+            android:title="@string/dark_light_mode"
+            android:icon="@drawable/ic_baseline_nights_stay_24"/>
+        <item android:id="@+id/nav_donate"
+            android:title="@string/donation"
+            android:icon="@drawable/ic_baseline_monetization_on_24"/>
+        <item android:id="@+id/nav_login"
+            android:title="@string/login"
+            android:icon="@drawable/ic_baseline_login_24"/>
+        <item android:title="@string/others">
+            <menu>
+                <item android:id="@+id/nav_share"
+                    android:title="@string/share"
+                    android:icon="@drawable/ic_baseline_share_24"/>
+                <item android:id="@+id/nav_about"
+                    android:title="@string/about_us"
+                    android:icon="@drawable/ic_baseline_contact_support_24"/>
+                <item android:id="@+id/nav_exit"
+                    android:title="@string/exit"
+                    android:icon="@drawable/ic_baseline_exit_to_app_24"/>
+            </menu>
+        </item>
+
+    </group>
+</menu>

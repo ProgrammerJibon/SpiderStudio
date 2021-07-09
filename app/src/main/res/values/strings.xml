@@ -3,6 +3,15 @@
     <string name="hello_world">Hello World!</string>
     <string name="dark_light_mode">Night Mode</string>
     <string name="splashscreen">SplashScreen</string>
+    <string name="profile">Profile</string>
+    <string name="home">Home</string>
+    <string name="messages">Messages</string>
+    <string name="login">Login</string>
+    <string name="donation">Donation</string>
+    <string name="share">Share</string>
+    <string name="about_us">About us</string>
+    <string name="exit">Exit</string>
+    <string name="others">Others</string>
     <bool name="dark_mode">false</bool>
     <bool name="light_mode">true</bool>
 </resources>

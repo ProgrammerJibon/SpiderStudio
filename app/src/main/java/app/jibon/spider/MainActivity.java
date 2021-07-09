@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button MainActivitySetMode = findViewById(R.id.MainActivitySetMode);
+        Button MainActivitySetMode = findViewById(R.id.nav_night_mode);
         MainActivitySetMode.setOnClickListener(view->{
             if (new Settings(getApplicationContext()).VisualModeSettings()){
                 new CustomToast(getApplicationContext(), "Visual Mode Changed");

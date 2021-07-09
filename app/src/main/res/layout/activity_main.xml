@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/screenBackgroundUniversal"
+    android:id="@+id/MainActivity"
+    tools:openDrawer="start"
     tools:context=".MainActivity">
 
-    <TextView
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_drawer"
+        android:background="@color/white"
+        app:menu="@menu/nav_menu_sidebar_main_activity"
+        android:layout_gravity="start"/>
+
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -25,5 +36,5 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:text="@string/dark_light_mode" />
-</RelativeLayout>
+        android:text="@string/dark_light_mode" />-->
+</androidx.drawerlayout.widget.DrawerLayout>
