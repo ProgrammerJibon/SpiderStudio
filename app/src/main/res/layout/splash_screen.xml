@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screenBackgroundUniversal"
+    >
+
+    <ImageView
+        android:id="@+id/splashScreenImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="219dp"
+        android:layout_marginBottom="250dp"
+        android:contentDescription="@string/splashscreen"
+        android:cropToPadding="true"
+        android:src="@drawable/ic_launcher_foreground"
+        app:tint="@color/dark_pink" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="-19dp"
+        android:layout_marginBottom="300dp"
+        android:gravity="center"
+        android:text="@string/app_cloner"
+        android:textAllCaps="true"
+        android:textColor="@color/dark_pink" />
+
+    <ProgressBar
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:indeterminate="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/dark_pink"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        tools:targetApi="lollipop" />
+</RelativeLayout>

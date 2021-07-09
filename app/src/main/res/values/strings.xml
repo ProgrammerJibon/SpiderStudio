@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">Spider</string>
-    <string name="loading">Loading...</string>
-    <string name="night_mode">Dark Mode</string>
+    <string name="app_cloner">Spider</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="dark_light_mode">Night Mode</string>
+    <string name="splashscreen">SplashScreen</string>
+    <bool name="dark_mode">false</bool>
+    <bool name="light_mode">true</bool>
 </resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_cloner">Spider</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="dark_light_mode">Light Mode</string>
+    <bool name="dark_mode">true</bool>
+    <bool name="light_mode">false</bool>
+</resources>
