@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:background="@color/screenBackgroundUniversal"
+    android:background="@color/UIBackgroundUniversal"
     android:layout_height="match_parent">
     <ImageView
         android:id="@+id/Custom_toast_icon"

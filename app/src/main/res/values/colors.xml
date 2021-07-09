@@ -10,6 +10,7 @@
     <color name="launcherIconForgroundColor">#FFFFFF</color>
     <color name="launcherIconBackgroundColor">#0E0E0E</color>
     <color name="textColorUniversal">#0E0E0E</color>
-    <color name="screenBackgroundUniversal">#FFFFFF</color>
+    <color name="screenBackgroundUniversal">#F0F0F0</color>
+    <color name="UIBackgroundUniversal">#B2FFFFFF</color>
     <color name="dark_pink">#ffff0077</color>
 </resources>
