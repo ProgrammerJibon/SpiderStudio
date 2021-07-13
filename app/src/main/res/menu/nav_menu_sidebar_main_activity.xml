@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
-    <group android:checkableBehavior="single">
-        <item android:checkable="false" android:title="Spider Studio"
-            tools:ignore="HardcodedText">
+    tools:showIn="navigation_view"
+    >
+    <group
+        android:checkableBehavior="single"
+        >
+        <item
+            android:checkable="false"
+            android:title="Spider Studio"
+            tools:ignore="HardcodedText"
+            >
             <menu>
                 <item android:id="@+id/nav_home"
-                    android:title="@string/home"
+                    android:title="Home"
                     android:icon="@drawable/ic_baseline_home_24"/>
                 <item android:id="@+id/profile"
                     android:title="@string/profile"
@@ -15,12 +22,30 @@
                 <item android:id="@+id/nav_messages"
                     android:title="@string/messages"
                     android:icon="@drawable/ic_baseline_message_24"/>
-                <item android:id="@+id/nav_night_mode"
-                    android:title="@string/dark_light_mode"
-                    android:icon="@drawable/ic_baseline_nights_stay_24"/>
                 <item android:id="@+id/nav_donate"
                     android:title="@string/donation"
                     android:icon="@drawable/ic_baseline_monetization_on_24"/>
+                <item android:id="@+id/nav_myOrders"
+                    android:title="My Orders"
+                    android:icon="@drawable/ic_baseline_shopping_cart_24"/>
+                <item android:id="@+id/nav_event"
+                    android:title="Events"
+                    android:icon="@drawable/ic_baseline_event_24"/>
+                <item android:id="@+id/nav_notification"
+                    android:title="Notifications"
+                    android:icon="@drawable/ic_baseline_notifications_none_24"/>
+                <item android:id="@+id/nav_categories"
+                    android:title="Categories"
+                    android:icon="@drawable/ic_outline_category_24"/>
+                <item android:id="@+id/nav_myWishList"
+                    android:title="My WishList"
+                    android:icon="@drawable/ic_baseline_playlist_add_check_24"/>
+                <item android:id="@+id/nav_ui_mode"
+                    android:title="Night Mode"
+                    android:icon="@drawable/ic_baseline_nights_stay_24"/>
+                <item android:id="@+id/nav_settings"
+                    android:title="Settings"
+                    android:icon="@drawable/ic_baseline_settings_24"/>
                 <item android:id="@+id/nav_login"
                     android:title="@string/login"
                     android:icon="@drawable/ic_baseline_login_24"/>
