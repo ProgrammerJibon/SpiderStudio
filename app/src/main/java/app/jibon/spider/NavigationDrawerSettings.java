@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,7 +27,8 @@ public class NavigationDrawerSettings{
         View header_layout = (activity.getLayoutInflater()).inflate(R.layout.header_navigation_menus, activity.findViewById(R.id.nav_profile_view), false);
         ((TextView) header_layout.findViewById(R.id.nav_profile_name)).setText("MD Jibon howlader"); // sample
         ((TextView) header_layout.findViewById(R.id.nav_profile_email)).setText("ProgrammerJibon@gmail.com"); // sample
-        ((ImageView) header_layout.findViewById(R.id.nav_profile_pic)).setImageBitmap(BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.developer)); // sample
+        //((ImageView) header_layout.findViewById(R.id.nav_profile_pic)).setImageBitmap(BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.developer)); // sample
+        ((ImageView) header_layout.findViewById(R.id.nav_profile_pic)).setImageResource(R.drawable.developer); // sample
         navigationView.addHeaderView(header_layout);
         // any item clicked of nav drawer
         navigationView.setNavigationItemSelectedListener(item -> {

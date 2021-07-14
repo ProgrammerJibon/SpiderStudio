@@ -12,6 +12,7 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawable(null);
         if (new Settings(this).SetVisualMode()){
             (new Timer()).schedule(new TimerTask() {
                 @Override
