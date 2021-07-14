@@ -1,5 +1,7 @@
 package app.jibon.spider;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -11,14 +13,14 @@ import androidx.appcompat.app.AppCompatDelegate;
 public class Settings  {
     public SharedPreferences preferences;
     public SharedPreferences.Editor preferencesEditor;
-    public Context context;
-    public Settings(Context applicationContext) {
-        this.context = applicationContext;
+    public Activity activity;
+    public Settings(Activity applicationContext) {
+        this.activity = applicationContext;
     }
 
     public Boolean VisualModeSettings(){
         try {
-            preferences= PreferenceManager.getDefaultSharedPreferences(context);
+            preferences= PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
             preferencesEditor= preferences.edit();
             if (preferences.getString("nightMode", "exception").equals("true")){
                 preferencesEditor.putString("nightMode", "false");
@@ -38,19 +40,15 @@ public class Settings  {
     }
     public Boolean SetVisualMode(){
         try {
-            preferences= PreferenceManager.getDefaultSharedPreferences(context);
-            preferencesEditor = preferences.edit();
+            preferences= (SharedPreferences) PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
             if (preferences.getString("nightMode", "exception").equals("true")){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             }else if (preferences.getString("nightMode", "exception").equals("false")){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            }else{
-                return false;
             }
-            preferencesEditor.apply();
             return true;
         }catch (Exception e){
-            Log.e("errno", e.toString());
+            new CustomToast(activity, e.toString(), R.drawable.ic_baseline_error_24);
             return false;
         }
 

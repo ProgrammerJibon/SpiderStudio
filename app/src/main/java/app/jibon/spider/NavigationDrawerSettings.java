@@ -59,7 +59,7 @@ public class NavigationDrawerSettings{
                 intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 activity.startActivity(intent);
             }else if (item.getItemId() == R.id.nav_ui_mode){
-                new Settings(activity.getApplicationContext()).VisualModeSettings();
+                new Settings(activity).VisualModeSettings();
             }
             return false;
         });
