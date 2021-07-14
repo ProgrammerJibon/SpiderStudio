@@ -12,6 +12,9 @@
     <string name="about_us">About us</string>
     <string name="exit">Exit</string>
     <string name="others">Others</string>
+    <string name="todo">TODO</string>
+    <string name="programmerjibon">ProgrammerJibon</string>
+    <string name="app_name">Spider Studio</string>
     <bool name="dark_mode">false</bool>
     <bool name="light_mode">true</bool>
 </resources>

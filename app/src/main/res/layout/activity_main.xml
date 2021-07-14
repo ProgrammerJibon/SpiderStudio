@@ -30,8 +30,12 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/nav_drawer"
-        android:background="@color/UIBackgroundUniversal"
+        android:fitsSystemWindows="true"
+        android:background="#B5FFFFFF"
         app:menu="@menu/nav_menu_sidebar_main_activity"
+        app:headerLayout="@layout/header_navigation_menus"
+        app:itemTextColor="#FF4D4D"
         android:layout_gravity="start"
+        app:itemIconTint="#FF513B"
         tools:targetApi="lollipop" />
 </androidx.drawerlayout.widget.DrawerLayout>

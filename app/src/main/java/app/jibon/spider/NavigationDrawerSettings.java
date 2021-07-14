@@ -13,6 +13,8 @@ import android.net.Uri;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -27,30 +29,19 @@ public class NavigationDrawerSettings{
 
     public NavigationDrawerSettings(Activity parentActivityIntent, int nav_drawer) {
         this.activity = parentActivityIntent;
+        // get the nav drawer
         NavigationView navigationView = activity.findViewById(nav_drawer);
         navigationView.setVisibility(View.VISIBLE);
+        // get the menus of nav drawer
         Menu nav_menus = navigationView.getMenu();
         nav_menus.findItem(R.id.nav_login).setTitle("Login"); //sample test
+        // get the header of nav drawer
+        View header_layout = navigationView.getHeaderView(0);
+        ((TextView) header_layout.findViewById(R.id.nav_profile_name)).setText(R.string.programmerjibon); // sample
+        navigationView.addHeaderView(header_layout);
+        // any item clicked of nav drawer
         navigationView.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.nav_share){
-                try {
-                    if (ActivityCompat.checkSelfPermission(activity.getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
-                        ApplicationInfo app = activity.getApplicationContext().getApplicationInfo();
-                        String filePath = app.sourceDir;
-                        Intent intent = new Intent(Intent.ACTION_SEND);
-                        intent.setType("*/*");
-                        Uri uri = Uri.fromFile(new File(filePath));
-                        intent.putExtra(Intent.EXTRA_STREAM, uri);
-                        activity.startActivity(Intent.createChooser(intent, "Share app via"));
-                    }else{
-                        new CustomToast(activity, "Please permit to read Storage", R.drawable.ic_baseline_warning_24);
-                    }
-
-
-                }catch (Exception error){
-                    new CustomToast(activity, error.toString(), R.drawable.ic_baseline_error_24);
-                }
-            }else if (item.getItemId() == R.id.nav_exit){
+            if (item.getItemId() == R.id.nav_exit){
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                 builder.setMessage("Are you sure to exit?")
                         .setCancelable(false)
