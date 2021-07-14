@@ -1,11 +1,13 @@
 package app.jibon.spider;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.view.Menu;
@@ -13,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -31,12 +34,18 @@ public class NavigationDrawerSettings{
         navigationView.setNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_share){
                 try {
-                    ApplicationInfo applicationInfo = activity.getApplicationContext().getApplicationInfo();
-                    String app_path = applicationInfo.sourceDir;
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("application/vnd.android.package-archive");
-                    intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(app_path)));
-                    activity.startActivity(Intent.createChooser(intent, "Share with"));
+                    if (ActivityCompat.checkSelfPermission(activity.getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                        ApplicationInfo app = activity.getApplicationContext().getApplicationInfo();
+                        String filePath = app.sourceDir;
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("*/*");
+                        Uri uri = Uri.fromFile(new File(filePath));
+                        intent.putExtra(Intent.EXTRA_STREAM, uri);
+                        activity.startActivity(Intent.createChooser(intent, "Share app via"));
+                    }else{
+                        new CustomToast(activity, "Please permit to read Storage", R.drawable.ic_baseline_warning_24);
+                    }
+
 
                 }catch (Exception error){
                     new CustomToast(activity, error.toString(), R.drawable.ic_baseline_error_24);
