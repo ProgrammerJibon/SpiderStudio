@@ -1,31 +1,18 @@
 package app.jibon.spider;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.graphics.drawable.Animatable;
-import android.net.Uri;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.navigation.NavigationView;
 
-import java.io.File;
-
 @SuppressLint("Registered")
 public class NavigationDrawerSettings{
-    protected Activity activity;
+    public Activity activity;
 
     public NavigationDrawerSettings(Activity parentActivityIntent, int nav_drawer) {
         this.activity = parentActivityIntent;
@@ -52,7 +39,7 @@ public class NavigationDrawerSettings{
                         .setNegativeButton("Later", (dialog, which) -> {
                             dialog.cancel();
                         });
-                ((AlertDialog)builder.create()).show();
+                builder.create().show();
             }else if (item.getItemId() == R.id.nav_home){
                 Intent intent = new Intent(activity, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
