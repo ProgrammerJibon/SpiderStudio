@@ -19,7 +19,7 @@ public class CustomToast {
         View view = activity.getLayoutInflater().inflate(R.layout.toast, activity.findViewById(R.id.Custom_toast), false);
         ((TextView) view.findViewById(R.id.Custom_toast_text)).setText(text);
         ((ImageView) view.findViewById(R.id.Custom_toast_icon)).setImageResource(drawable);
-        Toast toast = new Toast(activity);
+        Toast toast = new Toast(activity.getApplicationContext());
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(view);
         toast.show();

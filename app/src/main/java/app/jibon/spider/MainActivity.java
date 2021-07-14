@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         new CustomToast(this, "Welcome sir!", R.drawable.ic_baseline_notifications_none_24);
-        new NavigationDrawerSettings(this, R.id.nav_drawer);
+        //new NavigationDrawerSettings(this, R.id.nav_drawer);
     }
 
 
