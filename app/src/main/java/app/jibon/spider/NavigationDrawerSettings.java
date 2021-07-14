@@ -28,6 +28,7 @@ public class NavigationDrawerSettings{
     protected Activity activity;
 
     public NavigationDrawerSettings(Activity parentActivityIntent, int nav_drawer) {
+        try {
         this.activity = parentActivityIntent;
         // get the nav drawer
         NavigationView navigationView = activity.findViewById(nav_drawer);
@@ -36,13 +37,10 @@ public class NavigationDrawerSettings{
         Menu nav_menus = navigationView.getMenu();
         nav_menus.findItem(R.id.nav_login).setTitle("Login"); //sample test
         // get the header of nav drawer
-        try {
             View header_layout = (activity.getLayoutInflater()).inflate(R.layout.header_navigation_menus, null, false);
             ((TextView) header_layout.findViewById(R.id.nav_profile_name)).setText(R.string.programmerjibon); // sample
             navigationView.addHeaderView(header_layout);
-        }catch (Exception e){
-            new CustomToast(activity, e.toString(), R.drawable.ic_baseline_error_24);
-        }
+
 
         // any item clicked of nav drawer
         navigationView.setNavigationItemSelectedListener(item -> {
@@ -57,7 +55,7 @@ public class NavigationDrawerSettings{
                         .setNegativeButton("Later", (dialog, which) -> {
                             dialog.cancel();
                         });
-                ((AlertDialog)builder.create()).show();
+                builder.create().show();
             }else if (item.getItemId() == R.id.nav_home){
                 Intent intent = new Intent(activity, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -67,6 +65,8 @@ public class NavigationDrawerSettings{
                 new Settings(activity).VisualModeSettings();
             }
             return false;
-        });
+        });}catch (Exception e){
+        new CustomToast(activity, e.toString(), R.drawable.ic_baseline_error_24);
+    }
     }
 }
