@@ -22,7 +22,7 @@ public class NavigationDrawerSettings{
         // get the nav drawer
         NavigationView navigationView = activity.findViewById(nav_drawer);
         navigationView.setVisibility(View.VISIBLE);
-        navigationView.setPadding(0,200,0,0);
+        navigationView.findViewById(R.id.nav_profile_view).setPadding(0,200,0,0);
         // get the menus of nav drawer
         Menu nav_menus = navigationView.getMenu();
         nav_menus.findItem(R.id.nav_login).setTitle("Login"); //sample test
