@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
 }
 
+def vXcode = (int) (((new Date().getTime()/1000)-1510351294)/10)
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -10,8 +12,8 @@ android {
         applicationId "app.jibon.spider"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 17
-        versionName '1.0.17'
+        versionCode vXcode
+        versionName '1.0.'+vXcode
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
