@@ -5,21 +5,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class RunSplash2 extends AppCompatActivity {
-    private String[] permissionx = new String[]{
+    private final String[] permissionx = new String[]{
             Manifest.permission.INTERNET,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -53,15 +50,15 @@ public class RunSplash2 extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                new CustomToast(activity, "SLOT 1", R.drawable.ic_baseline_done_24);
+                Toast.makeText(activity,"SLOT1", Toast.LENGTH_LONG).show();
                 finish();
             }
         }, 4000);
     }
 
-    public static boolean hasPermissions(Context context, String... permissions) {
-        if (context != null && permissions != null) {
-            for (String permission : permissions) {
+    public boolean hasPermissions(Context context, String[] permissionx) {
+        if (context != null && permissionx != null) {
+            for (String permission : permissionx) {
                 if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
                     return false;
                 }
