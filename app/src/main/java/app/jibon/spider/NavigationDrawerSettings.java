@@ -36,9 +36,14 @@ public class NavigationDrawerSettings{
         Menu nav_menus = navigationView.getMenu();
         nav_menus.findItem(R.id.nav_login).setTitle("Login"); //sample test
         // get the header of nav drawer
-        View header_layout = navigationView.getHeaderView(0);
-        ((TextView) header_layout.findViewById(R.id.nav_profile_name)).setText(R.string.programmerjibon); // sample
-        navigationView.addHeaderView(header_layout);
+        try {
+            View header_layout = (activity.getLayoutInflater()).inflate(R.layout.header_navigation_menus, null, false);
+            ((TextView) header_layout.findViewById(R.id.nav_profile_name)).setText(R.string.programmerjibon); // sample
+            navigationView.addHeaderView(header_layout);
+        }catch (Exception e){
+            new CustomToast(activity, e.toString(), R.drawable.ic_baseline_error_24);
+        }
+
         // any item clicked of nav drawer
         navigationView.setNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_exit){
