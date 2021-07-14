@@ -48,10 +48,12 @@ public class RunSplash2 extends AppCompatActivity {
     }
 
     private void runBaseActivity() {
+        Activity activity = this;
         (new Timer()).schedule(new TimerTask() {
             @Override
             public void run() {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                new CustomToast(activity, "SLOT 1", R.drawable.ic_baseline_done_24);
                 finish();
             }
         }, 4000);
@@ -71,7 +73,7 @@ public class RunSplash2 extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull  String[] permissions, @NonNull  int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        Boolean denied = false;
+        boolean denied = false;
         for (int xxx = 0; xxx < permissions.length; xxx++) {
             String permission = permissions[xxx];
             int grantResult = grantResults[xxx];
