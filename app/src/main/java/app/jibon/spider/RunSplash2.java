@@ -71,38 +71,20 @@ public class RunSplash2 extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull  String[] permissions, @NonNull  int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        ArrayList<String> denied = new ArrayList();
+        Boolean denied = false;
         for (int xxx = 0; xxx < permissions.length; xxx++) {
             String permission = permissions[xxx];
             int grantResult = grantResults[xxx];
             for (String s : permissions) {
                 if (permission.equals(s)) {
                     if (grantResult != PackageManager.PERMISSION_GRANTED){
-                        denied.add(s);
+                        denied = true;
                     }
                 }
             }
         }
-        if (denied.size() > 0){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                Activity activity = this.getParent();
-                for(int xxy = 0; xxy < denied.size(); xxy++){
-                    String denieds = denied.get(xxy);
-                    (new Timer()).schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            new CustomToast(activity, "Please Grant " + denieds, R.drawable.ic_baseline_warning_24);
-                        }
-                    }, xxy*300);
-
-                }
-                (new Timer()).schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        new CustomToast(activity, "Some permission is missing", R.drawable.ic_baseline_error_24);
-                    }
-                }, denied.size()*300);
-            }
+        if (denied){
+            new CustomToast(this.getParent(), "Some Permissions Are Denieted", R.drawable.ic_baseline_error_24);
 
         }else{
             runBaseActivity();

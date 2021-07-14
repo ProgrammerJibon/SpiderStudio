@@ -10,8 +10,8 @@ android {
         applicationId "app.jibon.spider"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 9
-        versionName '1.0.8'
+        versionCode 10
+        versionName '1.0.10'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
