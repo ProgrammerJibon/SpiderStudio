@@ -23,7 +23,7 @@ public class NavigationDrawerSettings{
         Menu nav_menus = navigationView.getMenu();
         nav_menus.findItem(R.id.nav_login).setTitle("Login"); //sample test
         // get the header of nav drawer
-        View header_layout = (activity.getLayoutInflater()).inflate(R.layout.header_navigation_menus, null, false);
+        View header_layout = (activity.getLayoutInflater()).inflate(R.layout.header_navigation_menus, activity.findViewById(R.id.nav_profile_view), false);
         ((TextView) header_layout.findViewById(R.id.nav_profile_name)).setText(activity.getApplicationInfo().loadLabel(activity.getPackageManager())); // sample
         navigationView.addHeaderView(header_layout);
         // any item clicked of nav drawer
