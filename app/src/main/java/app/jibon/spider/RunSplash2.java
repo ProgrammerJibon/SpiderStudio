@@ -53,7 +53,7 @@ public class RunSplash2 extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                new CustomToast(activity, "SLOT 1", R.drawable.ic_baseline_done_24);
+                Toast.makeText(activity,"SLOT1", Toast.LENGTH_LONG).show();
                 finish();
             }
         }, 4000);
