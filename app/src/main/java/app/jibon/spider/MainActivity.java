@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
             new CustomToast(this, "Welcome sir!", R.drawable.ic_baseline_notifications_none_24);
             new NavigationDrawerSettings(this, R.id.nav_drawer);
         }catch (Exception e){
-            e.toString();
+            new CustomToast(this, e.toString(), R.drawable.ic_baseline_warning_24);
         }
 
     }
