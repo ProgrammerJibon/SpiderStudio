@@ -33,8 +33,6 @@
         android:background="#B5FFFFFF"
         app:menu="@menu/nav_menu_sidebar_main_activity"
         app:itemTextColor="#FF4D4D"
-        android:paddingTop="50dp"
-        app:headerLayout="@layout/header_navigation_menus"
         android:layout_gravity="start"
         app:itemIconTint="#FF513B"
         tools:targetApi="lollipop" />
