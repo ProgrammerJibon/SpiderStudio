@@ -46,14 +46,19 @@ public class RunSplash2 extends AppCompatActivity {
     }
 
     private void runBaseActivity() {
-        (new Timer()).schedule(new TimerTask() {
-            @Override
-            public void run() {
-                new CustomToast(activity, "TARAKHA", R.drawable.ic_baseline_done_24);
-                startActivity(new Intent(activity, MainActivity.class));
-                finish();
-            }
-        }, 4000);
+        try {
+            (new Timer()).schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    new CustomToast(activity, "TARAKHA", R.drawable.ic_baseline_done_24);
+                    startActivity(new Intent(activity, MainActivity.class));
+                    finish();
+                }
+            }, 4000);
+        }catch (Exception e){
+            new CustomToast(activity, e.toString(), R.drawable.ic_baseline_error_24);
+        }
+
     }
 
     public boolean hasPermissions(Context context, String[] permissionx) {
