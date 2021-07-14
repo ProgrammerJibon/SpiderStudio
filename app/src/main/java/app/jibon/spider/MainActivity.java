@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new CustomToast(this, "Welcome sir!", R.drawable.ic_baseline_notifications_none_24);
+        //new CustomToast(this, "Welcome sir!", R.drawable.ic_baseline_notifications_none_24);
         //new NavigationDrawerSettings(this, R.id.nav_drawer);
     }
 
