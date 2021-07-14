@@ -50,7 +50,7 @@ public class RunSplash2 extends AppCompatActivity {
             @Override
             public void run() {
                 new CustomToast(activity, "TARAKHA", R.drawable.ic_baseline_done_24);
-                startActivity(new Intent(activity, MainActivity.class));
+                startActivity(new Intent(RunSplash2.this, MainActivity.class));
                 finish();
             }
         }, 4000);
