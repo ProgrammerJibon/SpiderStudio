@@ -12,7 +12,6 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setBackgroundDrawable(null);
         if (new Settings(this).SetVisualMode()){
             (new Timer()).schedule(new TimerTask() {
                 @Override
@@ -20,7 +19,7 @@ public class SplashScreen extends AppCompatActivity {
                     startActivity(new Intent(SplashScreen.this, MainActivity.class));
                     finish();
                 }
-            }, 1000);
+            }, 2000);
         }else{
             new CustomToast(this, "Something went wrong", R.drawable.ic_baseline_error_24);
             finish();
