@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +15,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class RunSplash2 extends AppCompatActivity {
+    Activity activity = this;
     private final String[] permissionx = new String[]{
             Manifest.permission.INTERNET,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -40,17 +40,17 @@ public class RunSplash2 extends AppCompatActivity {
             runBaseActivity();
         }else{
             ActivityCompat.requestPermissions(this, permissionx, REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
+            runBaseActivity();
         }
 
     }
 
     private void runBaseActivity() {
-        Activity activity = this;
         (new Timer()).schedule(new TimerTask() {
             @Override
             public void run() {
+                new CustomToast(activity, "TARAKHA", R.drawable.ic_baseline_done_24);
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                Toast.makeText(activity,"SLOT1", Toast.LENGTH_LONG).show();
                 finish();
             }
         }, 4000);
@@ -83,7 +83,7 @@ public class RunSplash2 extends AppCompatActivity {
             }
         }
         if (denied){
-            new CustomToast(this.getParent(), "Some Permissions Are Denieted", R.drawable.ic_baseline_error_24);
+            new CustomToast(activity, "Some Permissions Are Denieted", R.drawable.ic_baseline_error_24);
 
         }else{
             runBaseActivity();
