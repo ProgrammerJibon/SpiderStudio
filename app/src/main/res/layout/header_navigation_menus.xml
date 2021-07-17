@@ -12,7 +12,7 @@
         android:layout_height="50dp"/>
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        app:cardCornerRadius="250dp"
+        app:cardCornerRadius="55dp"
         android:layout_height="wrap_content"
         >
         <ImageView
