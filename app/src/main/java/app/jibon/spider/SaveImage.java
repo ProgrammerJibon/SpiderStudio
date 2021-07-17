@@ -5,12 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 
 public class SaveImage extends AsyncTask<Bitmap, Bitmap, Bitmap> {
     public Activity activity;
@@ -35,12 +37,16 @@ public class SaveImage extends AsyncTask<Bitmap, Bitmap, Bitmap> {
 
     @Override
     protected Bitmap doInBackground(Bitmap[] objects) {
-        try {
+        try{
             URL urlx = new URL(url);
-            URLConnection connection = urlx.openConnection();
-            return BitmapFactory.decodeStream(connection.getInputStream());
-        } catch (Exception error) {
-            Toast.makeText(activity, error.toString(), Toast.LENGTH_LONG).show();
+            HttpURLConnection urlxConnection = (HttpURLConnection) urlx.openConnection();
+            urlxConnection.setUseCaches(true);
+            InputStream urlxInputStream = urlxConnection.getInputStream();
+            Bitmap bitmap = BitmapFactory.decodeStream(urlxInputStream);
+            Log.e("errnos", "Getting Images...(1)");
+            return bitmap;
+        }catch (Exception e){
+            Log.e("errnos", e.toString());
             return null;
         }
     }
@@ -65,7 +71,7 @@ public class SaveImage extends AsyncTask<Bitmap, Bitmap, Bitmap> {
                 Toast.makeText(activity, error.toString(), Toast.LENGTH_LONG).show();
             }
 
-        }else if (file.exists()) {
+        }else{
             if (file.delete()){
                 try {
                     FileOutputStream out = new FileOutputStream(file);

@@ -34,8 +34,7 @@ public class NavigationDrawerSettings{
         if (profile_pic_from_storage.exists()) {
             ((ImageView) header_layout.findViewById(R.id.nav_profile_pic)).setImageBitmap(BitmapFactory.decodeFile(profile_pic_from_storage.getAbsolutePath()));
         } else {
-            ((ImageView) header_layout.findViewById(R.id.nav_profile_pic)).setImageResource(R.drawable.ic_outline_account_circle_24);
-            new SaveImage(activity, "https://i.pinimg.com/736x/91/75/1f/91751f67c7ee60fc7742ee2e13c657e4.jpg", "profile.png");
+            (new OpenImageLink("https://i.pinimg.com/736x/91/75/1f/91751f67c7ee60fc7742ee2e13c657e4.jpg",  header_layout.findViewById(R.id.nav_profile_pic))).execute();
         }
         ((TextView) header_layout.findViewById(R.id.nav_profile_name)).setText("MD JIBON HOWLADER"); // sample
         ((TextView) header_layout.findViewById(R.id.nav_profile_email)).setText("UserName@DOMAIN.COM"); // sample

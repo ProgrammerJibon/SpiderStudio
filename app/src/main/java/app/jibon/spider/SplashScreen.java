@@ -46,7 +46,7 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void runMainThread(Activity activity){
-        new SaveImage(activity, "https://i.pinimg.com/736x/91/75/1f/91751f67c7ee60fc7742ee2e13c657e4.jpg", "profile.png");
+        //new SaveImage(activity, "https://i.pinimg.com/736x/91/75/1f/91751f67c7ee60fc7742ee2e13c657e4.jpg", "profile.png");
         if (new Settings(activity).SetVisualMode()){
             (new Timer()).schedule(new TimerTask() {
                 @Override
