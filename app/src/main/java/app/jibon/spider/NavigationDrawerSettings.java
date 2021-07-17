@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.view.Menu;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
+import java.net.URL;
+import java.net.URLConnection;
 
 @SuppressLint("Registered")
 public class NavigationDrawerSettings{
@@ -34,6 +37,15 @@ public class NavigationDrawerSettings{
         if (profile_pic_from_storage.exists()) {
             ((ImageView) header_layout.findViewById(R.id.nav_profile_pic)).setImageBitmap(BitmapFactory.decodeFile(profile_pic_from_storage.getAbsolutePath()));
         } else {
+            URL urlx = null;
+            try {
+                urlx = new URL("https://i.pinimg.com/736x/91/75/1f/91751f67c7ee60fc7742ee2e13c657e4.jpg");
+                URLConnection connection = urlx.openConnection();
+                Bitmap bitmap =  BitmapFactory.decodeStream(connection.getInputStream());
+                ((ImageView) header_layout.findViewById(R.id.nav_profile_pic)).setImageBitmap(bitmap);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             ((ImageView) header_layout.findViewById(R.id.nav_profile_pic)).setImageResource(R.drawable.ic_outline_account_circle_24);
             new SaveImage(activity, "https://i.pinimg.com/736x/91/75/1f/91751f67c7ee60fc7742ee2e13c657e4.jpg", "profile.png");
         }
