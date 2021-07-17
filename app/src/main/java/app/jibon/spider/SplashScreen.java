@@ -21,7 +21,8 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         String[] permissions = {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.INTERNET
         };
         int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 255;
         if (hasPermission(this, permissions)){
