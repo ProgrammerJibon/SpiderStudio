@@ -35,12 +35,6 @@
                 <category android:name="android.intent.category.DEVELOPMENT_PREFERENCE"/>
             </intent-filter>
         </activity>
-        <activity android:name=".RunSplash2" android:theme="@style/SplashScreen2">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEVELOPMENT_PREFERENCE"/>
-            </intent-filter>
-        </activity>
         <activity android:name=".SplashScreen" android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

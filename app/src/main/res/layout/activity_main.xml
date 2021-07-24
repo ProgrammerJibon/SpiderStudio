@@ -11,28 +11,21 @@
     tools:context=".MainActivity">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/imageView"
-            android:src="@color/dark_pink"
-            android:contentDescription="@string/todo"
-            android:scaleType="centerCrop"/>
+        android:layout_height="match_parent"
+        android:gravity="center">
 
         <EditText
             android:id="@+id/pasteLinkOfFile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="300dp"
             android:autofillHints="@string/share"
             android:background="@color/transparent"
             android:elevation="5dp"
-            android:gravity="center"
             android:hint="@string/enterfilelink"
             android:inputType="textUri"
+            android:paddingStart="8dp"
             android:paddingTop="16dp"
+            android:paddingEnd="8dp"
             android:paddingBottom="16dp"
             android:textColor="@color/white"
             android:textSize="12sp"

@@ -1,17 +1,11 @@
 package app.jibon.spider;
 
 import android.app.AlertDialog;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -24,14 +18,7 @@ public class MainActivity extends AppCompatActivity {
             if (actionId == EditorInfo.IME_ACTION_DONE){
                 if (!(pasteFileLink.getText()).equals("")){
                     String pastedLink = String.valueOf(pasteFileLink.getText());
-                    try{
-                        (new SaveImage(this, pastedLink, null)).execute().get();
-                        File filePic = new File(Environment.getExternalStorageDirectory(), ".ProgrammerJibon");
-                        filePic = new File(String.valueOf(filePic.getAbsoluteFile()), (new File(pastedLink).getName())+".jpg");
-                        ((ImageView) findViewById(R.id.imageView)).setImageBitmap(BitmapFactory.decodeFile(filePic.getAbsolutePath()));
-                    }catch (Exception e){
-                        Log.e("errno", e.toString());
-                    }
+                    (new SaveImage(this, pastedLink, null)).execute();
                 }
                 pasteFileLink.setText("");
             }

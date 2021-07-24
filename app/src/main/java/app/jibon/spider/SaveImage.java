@@ -33,6 +33,7 @@ public class SaveImage extends AsyncTask<Bitmap, Bitmap, Bitmap> {
                 Toast.makeText(activity, "Unable to make folder", Toast.LENGTH_LONG).show();
             }
         }
+
     }
 
     @Override
