@@ -15,6 +15,7 @@
     <string name="todo">TODO</string>
     <string name="programmerjibon">ProgrammerJibon</string>
     <string name="app_name">Spider Studio</string>
+    <string name="enterfilelink">EnterFileLink</string>
     <bool name="dark_mode">false</bool>
     <bool name="light_mode">true</bool>
 </resources>

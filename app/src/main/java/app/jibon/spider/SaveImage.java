@@ -19,17 +19,17 @@ public class SaveImage extends AsyncTask<Bitmap, Bitmap, Bitmap> {
     public String url;
     public String path;
 
-    public SaveImage(Activity activityx, String urlx, String pathx) {
+    public SaveImage(Activity activityx, String urlx, String FILE_NAME) {
         this.activity = activityx;
         this.url = urlx;
-        this.path = pathx;
+        this.path = FILE_NAME;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        if (!(new File(Environment.getExternalStorageDirectory()+"/.programmerjibon")).exists()) {
-            if (!(new File(Environment.getExternalStorageDirectory()+"/.programmerjibon")).mkdir()){
+        if (!(new File(Environment.getExternalStorageDirectory()+"/.ProgrammerJibon")).exists()) {
+            if (!(new File(Environment.getExternalStorageDirectory()+"/.ProgrammerJibon")).mkdir()){
                 Toast.makeText(activity, "Unable to make folder", Toast.LENGTH_LONG).show();
             }
         }
@@ -44,6 +44,10 @@ public class SaveImage extends AsyncTask<Bitmap, Bitmap, Bitmap> {
             InputStream urlxInputStream = urlxConnection.getInputStream();
             Bitmap bitmap = BitmapFactory.decodeStream(urlxInputStream);
             Log.e("errnos", "Getting Images...(1)");
+            if (this.path == null){
+                this.path = urlx.getFile()+".jpg";
+
+            }
             return bitmap;
         }catch (Exception e){
             Log.e("errnos", e.toString());
@@ -54,38 +58,35 @@ public class SaveImage extends AsyncTask<Bitmap, Bitmap, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap bitmap) {
         super.onPostExecute(bitmap);
-        File sdCard = Environment.getExternalStorageDirectory();
-        File folder = new File(sdCard.getAbsoluteFile(), ".ProgrammerJibon");
-        if (!folder.exists()) {
-            folder.mkdir();
-        }
-        File file = new File(folder.getAbsoluteFile(), path);
-        if (!file.exists()) {
-            try {
+        try {
+            File sdCard = Environment.getExternalStorageDirectory();
+            File folder = new File(sdCard.getAbsoluteFile(), ".ProgrammerJibon");
+            if (!folder.exists()) {
+                folder.mkdir();
+            }
+            File file = new File(folder.getAbsoluteFile(), path);
+            if (!file.exists()) {
                 FileOutputStream out = new FileOutputStream(file);
-                bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
                 out.flush();
                 out.close();
-            } catch (Exception error) {
-                error.printStackTrace();
-                Toast.makeText(activity, error.toString(), Toast.LENGTH_LONG).show();
-            }
 
-        }else{
-            if (file.delete()){
-                try {
+
+            }else{
+                if (file.delete()){
                     FileOutputStream out = new FileOutputStream(file);
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
                     out.flush();
                     out.close();
-                } catch (Exception error) {
-                    error.printStackTrace();
-                    Toast.makeText(activity, error.toString(), Toast.LENGTH_LONG).show();
                 }
+
+
             }
-
-
-        }
+            Log.e("errnos", "Saved as "+path);
+        } catch (Exception error) {
+        error.printStackTrace();
+        Log.e("errnos", error.toString());
+    }
 
 
     }

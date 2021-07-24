@@ -29,7 +29,7 @@ public class NavigationDrawerSettings{
         nav_menus.findItem(R.id.nav_login).setTitle("Login"); //sample test
         // get the header of nav drawer
         View header_layout = (activity.getLayoutInflater()).inflate(R.layout.header_navigation_menus, activity.findViewById(R.id.nav_profile_view), false);
-        File profile_pic_from_storage = new File(Environment.getExternalStorageDirectory(), ".programmerjibon");
+        File profile_pic_from_storage = new File(Environment.getExternalStorageDirectory(), ".ProgrammerJibon");
         profile_pic_from_storage = new File(String.valueOf(profile_pic_from_storage.getAbsoluteFile()), "profile.png");
         if (profile_pic_from_storage.exists()) {
             ((ImageView) header_layout.findViewById(R.id.nav_profile_pic)).setImageBitmap(BitmapFactory.decodeFile(profile_pic_from_storage.getAbsolutePath()));
@@ -63,5 +63,6 @@ public class NavigationDrawerSettings{
             }
             return false;
         });
+
     }
 }

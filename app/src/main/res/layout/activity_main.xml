@@ -20,6 +20,25 @@
             android:contentDescription="@string/todo"
             android:scaleType="centerCrop"/>
 
+        <EditText
+            android:id="@+id/pasteLinkOfFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="300dp"
+            android:autofillHints="@string/share"
+            android:background="@color/transparent"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:hint="@string/enterfilelink"
+            android:inputType="textUri"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            tools:ignore="UnusedAttribute" />
+
     </RelativeLayout>
 
 
@@ -32,5 +51,6 @@
         app:itemTextColor="#FF4D4D"
         android:layout_gravity="start"
         app:itemIconTint="#FF513B"
+        android:visibility="gone"
         tools:targetApi="lollipop" />
 </androidx.drawerlayout.widget.DrawerLayout>
