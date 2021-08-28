@@ -5,33 +5,91 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/screenBackgroundUniversal"
-    android:id="@+id/MainActivity"
-    tools:openDrawer="start"
+    android:id="@+id/Drawer"
+    tools:openDrawer="end"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/pasteLinkOfFile"
+        <LinearLayout
+            android:id="@+id/actionMenuView"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/deep_pink"
+            android:divider="@color/dark_pink"
+            android:dividerPadding="1sp"
+            android:elevation="5dp"
+            android:orientation="horizontal"
+            android:showDividers="end">
+            <ImageView
+                android:id="@+id/MainActivityBackButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.5"
+                android:background="@drawable/just_ripple"
+                android:padding="15dp"
+                android:rotation="180"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                app:tint="@color/white"
+                tools:ignore="ContentDescription" />
+            <TextView
+                android:id="@+id/MainActivityTitleText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center_vertical"
+                android:letterSpacing="0.1"
+                android:text="@string/page_title"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+            <ImageView
+                android:id="@+id/MainActivityMoreButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:background="@drawable/just_ripple"
+                android:padding="15dp"
+                android:src="@drawable/ic_baseline_more_vert_24"/>
+        </LinearLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/MainActivityViewPager1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/MainActivityViewPager1Tablayout"
+            android:layout_below="@+id/actionMenuView"
+            android:layout_marginBottom="0dp"
+            android:gravity="center" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/MainActivityViewPager1Tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="@string/share"
-            android:background="@color/transparent"
-            android:elevation="5dp"
-            android:hint="@string/enterfilelink"
-            android:inputType="textUri"
-            android:paddingStart="8dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="16dp"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:textStyle="italic"
-            tools:ignore="UnusedAttribute" />
-
+            android:layout_alignParentBottom="true"
+            android:background="@color/dark_pink"
+            app:tabGravity="fill"
+            app:tabIconTint="@color/white"
+            app:tabIndicatorColor="@color/white"
+            app:tabMode="fixed"
+            app:tabRippleColor="@color/deep_pink" >
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:icon="@drawable/ic_baseline_home_24"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:icon="@drawable/ic_baseline_notifications_none_24"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:icon="@drawable/ic_baseline_settings_24"/>
+        </com.google.android.material.tabs.TabLayout>
     </RelativeLayout>
 
 
@@ -42,7 +100,7 @@
         android:background="#FFFFFFFF"
         app:menu="@menu/nav_menu_sidebar_main_activity"
         app:itemTextColor="#FF4D4D"
-        android:layout_gravity="start"
+        android:layout_gravity="end"
         app:itemIconTint="#FF513B"
         android:visibility="gone"
         tools:targetApi="lollipop" />

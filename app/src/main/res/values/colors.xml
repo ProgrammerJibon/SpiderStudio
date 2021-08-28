@@ -13,5 +13,6 @@
     <color name="screenBackgroundUniversal">#F0F0F0</color>
     <color name="UIBackgroundUniversal">#B2FFFFFF</color>
     <color name="dark_pink">#ffff0077</color>
+    <color name="deep_pink">#B50054</color>
     <color name="transparent">#00000000</color>
 </resources>

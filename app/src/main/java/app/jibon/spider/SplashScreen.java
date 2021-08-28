@@ -48,14 +48,14 @@ public class SplashScreen extends AppCompatActivity {
 
     private void runMainThread(Activity activity){
         new SaveImage(activity, "https://i.pinimg.com/736x/91/75/1f/91751f67c7ee60fc7742ee2e13c657e4.jpg", "profile.png");
-        if (new Settings(activity).SetVisualMode()){
+        if ((new Settings(activity)).setVisualMode()){
             (new Timer()).schedule(new TimerTask() {
                 @Override
                 public void run() {
                     startActivity(new Intent(activity, MainActivity.class));
                     finish();
                 }
-            }, 3000);
+            }, 500);
         }else{
             new CustomToast(activity, "Something went wrong", R.drawable.ic_baseline_error_24);
             finish();
@@ -79,4 +79,5 @@ public class SplashScreen extends AppCompatActivity {
             finish();
         }
     }
+
 }

@@ -2,8 +2,6 @@ package app.jibon.spider;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.view.Menu;
@@ -11,9 +9,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
+import java.util.Timer;
+import java.util.TimerTask;
 
 @SuppressLint("Registered")
 public class NavigationDrawerSettings{
@@ -23,6 +27,7 @@ public class NavigationDrawerSettings{
         this.activity = parentActivityIntent;
         // get the nav drawer
         NavigationView navigationView = activity.findViewById(nav_drawer);
+        DrawerLayout drawerLayout = activity.findViewById(R.id.Drawer);
         navigationView.setVisibility(View.VISIBLE);
         // get the menus of nav drawer
         Menu nav_menus = navigationView.getMenu();
@@ -42,25 +47,26 @@ public class NavigationDrawerSettings{
         // any item clicked of nav drawer
         navigationView.setNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_exit){
-                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                builder.setMessage("Are you sure to exit?")
-                        .setCancelable(false)
-                        .setPositiveButton("Exit", (dialog, which) -> {
-                            activity.finish();
-                            activity.onBackPressed();
-                        })
-                        .setNegativeButton("Later", (dialog, which) -> {
-                            dialog.cancel();
-                        });
-                builder.create().show();
+                (new Settings(activity)).exitApp();
             }else if (item.getItemId() == R.id.nav_home){
-                Intent intent = new Intent(activity, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                activity.startActivity(intent);
+                ((ViewPager) activity.findViewById(R.id.MainActivityViewPager1)).setCurrentItem(0);
+            }else if (item.getItemId() == R.id.profile){
+                ((ViewPager) activity.findViewById(R.id.MainActivityViewPager1)).setCurrentItem(1);
+            }else if (item.getItemId() == R.id.nav_messages){
+                ((ViewPager) activity.findViewById(R.id.MainActivityViewPager1)).setCurrentItem(2);
+            }else if (item.getItemId() == R.id.nav_notification){
+                ((ViewPager) activity.findViewById(R.id.MainActivityViewPager1)).setCurrentItem(3);
             }else if (item.getItemId() == R.id.nav_ui_mode){
-                new Settings(activity).VisualModeSettings();
+                if ((new Settings(activity)).visualModeSettings()){
+                    (new Settings(activity)).restartApp("Restart to proceed...");
+                }
             }
+            (new Timer()).schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    drawerLayout.closeDrawer(GravityCompat.END);
+                }
+            }, 100);
             return false;
         });
 
