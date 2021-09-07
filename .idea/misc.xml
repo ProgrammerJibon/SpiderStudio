@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/__PROJECTS__/App Dev/spider/app/src/main/res/drawable/ic_baseline_contact_support_24.xml" value="0.240625" />
         <entry key="..\:/__PROJECTS__/App Dev/spider/app/src/main/res/drawable/just_ripple.xml" value="0.115625" />
         <entry key="..\:/__PROJECTS__/App Dev/spider/app/src/main/res/drawable/splash_screen.xml" value="0.23794871794871794" />
+        <entry key="..\:/__PROJECTS__/App Dev/spider/app/src/main/res/layout/activity_login.xml" value="0.21388888888888888" />
         <entry key="..\:/__PROJECTS__/App Dev/spider/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/__PROJECTS__/App Dev/spider/app/src/main/res/layout/fragment_home.xml" value="0.20185185185185187" />
         <entry key="..\:/__PROJECTS__/App Dev/spider/app/src/main/res/layout/fragment_messages.xml" value="0.2109375" />

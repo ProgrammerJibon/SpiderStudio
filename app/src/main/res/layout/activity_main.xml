@@ -57,14 +57,16 @@
                 android:src="@drawable/ic_baseline_more_vert_24"/>
         </LinearLayout>
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/MainActivityViewPager1"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/MainActivityViewFragment1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:name="app.jibon.spider.Fragments.Home"
             android:layout_above="@+id/MainActivityViewPager1Tablayout"
             android:layout_below="@+id/actionMenuView"
             android:layout_marginBottom="0dp"
-            android:gravity="center" />
+            android:gravity="center"
+            tools:ignore="FragmentTagUsage" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/MainActivityViewPager1Tablayout"

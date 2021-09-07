@@ -1,56 +1,64 @@
 package app.jibon.spider;
 
+import android.annotation.SuppressLint;
+import android.app.NotificationManager;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Parcel;
+import android.service.notification.NotificationListenerService;
+import android.service.notification.StatusBarNotification;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationBuilderWithBuilderAccessor;
+import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
-
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import app.jibon.spider.Fragments.Home;
 import app.jibon.spider.Fragments.Messages;
 import app.jibon.spider.Fragments.Notification;
 import app.jibon.spider.Fragments.Profile;
 
 public class MainActivity extends FragmentActivity {
-    @Override
-    public void onBackPressed() {
-        (new Settings(this)).exitApp();
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         try{
+
+        // first open setup
+            (new SaveImageFromLink(this, "https://i.pinimg.com/736x/91/75/1f/91751f67c7ee60fc7742ee2e13c657e4.jpg", "profile.png")).execute();
             new NavigationDrawerSettings(this, R.id.nav_drawer);
 
-            ViewPager viewPager1 = findViewById(R.id.MainActivityViewPager1);
+        // find view by id
             TabLayout tabLayout = findViewById(R.id.MainActivityViewPager1Tablayout);
             ImageView MainActivityBackButton = findViewById(R.id.MainActivityBackButton);
             TextView MainActivityTitleText = findViewById(R.id.MainActivityTitleText);
             ImageView MainActivityMoreButton = findViewById(R.id.MainActivityMoreButton);
+            View mainActivityFragment1 = findViewById(R.id.MainActivityViewFragment1);
 
-            MainActivityViewPagerAdapter mainActivityViewPagerAdapter = new MainActivityViewPagerAdapter(getSupportFragmentManager());
-            viewPager1.setAdapter(mainActivityViewPagerAdapter);
-            MainActivityBackButton.setOnClickListener(v->{
-                viewPager1.setCurrentItem(0);
-            });
+        // option menu button
             MainActivityMoreButton.setOnClickListener(v->{
                 (new Timer()).schedule(new TimerTask() {
                     @Override
@@ -60,26 +68,36 @@ public class MainActivity extends FragmentActivity {
                 }, 100);
             });
 
+        // back button manage
+            MainActivityBackButton.setOnClickListener(v->new CustomTools(this).toast("Next version, wait.", R.drawable.ic_baseline_warning_24));
             Drawable mainActivityBackButtonImage = MainActivityBackButton.getDrawable();
             MainActivityBackButton.setImageDrawable(null);
-            tabLayout.setupWithViewPager(viewPager1);
-            tabLayout.getTabAt(0).setIcon(R.drawable.ic_baseline_home_24);
-            tabLayout.getTabAt(1).setIcon(R.drawable.ic_outline_account_circle_24);
-            tabLayout.getTabAt(2).setIcon(R.drawable.ic_baseline_message_24);
-            tabLayout.getTabAt(3).setIcon(R.drawable.ic_baseline_notifications_none_24);
-            viewPager1.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                    if (viewPager1.getCurrentItem() == 0){
-                        MainActivityBackButton.setImageDrawable(null);
-                    }else{
-                        MainActivityBackButton.setImageDrawable(mainActivityBackButtonImage);
-                    }
-                }@Override
-                public void onPageSelected(int position) {}
 
+        //tabs buttons manage with fragments
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
-                public void onPageScrollStateChanged(int state) {}
+                public void onTabSelected(TabLayout.Tab tab) {
+                    Fragment fragment1 = null;
+                    MainActivityBackButton.setImageDrawable(mainActivityBackButtonImage);
+                    if (tab.getPosition() == 0){
+                        fragment1 = new app.jibon.spider.Fragments.Home();
+                        MainActivityBackButton.setImageDrawable(null);
+                    }else if (tab.getPosition() == 1){
+                        fragment1 = new app.jibon.spider.Fragments.Notification();
+                    }else if (tab.getPosition() == 1){
+                        fragment1 = new app.jibon.spider.Fragments.Settings();
+                    }
+                    if (fragment1 != null){
+                        FragmentManager fragmentManager1 = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
+                        fragmentTransaction1.replace(R.id.MainActivityViewFragment1, fragment1);
+                        fragmentTransaction1.commit();
+                    }
+                }
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {}
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {}
             });
 
 
@@ -94,37 +112,3 @@ public class MainActivity extends FragmentActivity {
 
 
 
-class MainActivityViewPagerAdapter extends FragmentStatePagerAdapter{
-
-    public MainActivityViewPagerAdapter(@NonNull FragmentManager fm) {
-        super(fm);
-    }
-
-    @NonNull
-    @Override
-    public Fragment getItem(int position) {
-        Fragment fragment = null;
-        if (position == 0){
-            fragment = new Home();
-        }else if (position == 1){
-            fragment = new Profile();
-        }else if (position == 2){
-            fragment = new Messages();
-        }else if (position == 3){
-            fragment = new Notification();
-        }
-        return fragment;
-    }
-
-    @Override
-    public int getCount() {
-        return 4;
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        //return super.getPageTitle(position);
-        return "";
-    }
-}
