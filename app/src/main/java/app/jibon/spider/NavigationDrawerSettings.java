@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -31,7 +30,6 @@ public class NavigationDrawerSettings{
         navigationView.setVisibility(View.VISIBLE);
         // get the menus of nav drawer
         Menu nav_menus = navigationView.getMenu();
-        nav_menus.findItem(R.id.nav_login).setTitle("Login"); //sample test
         // get the header of nav drawer
         View header_layout = (activity.getLayoutInflater()).inflate(R.layout.header_navigation_menus, activity.findViewById(R.id.nav_profile_view), false);
         File profile_pic_from_storage = null;
@@ -61,8 +59,8 @@ public class NavigationDrawerSettings{
                 // wait bro
             }else if (item.getItemId() == R.id.nav_notification){
                 // wait bro
-            }else if (item.getItemId() == R.id.nav_ui_mode){
-                new CustomTools(activity).toast("Beta version users only", R.drawable.ic_baseline_warning_24);
+            }else if (item.getItemId() == R.id.nav_logout){
+                new SignOut(activity, new Data(activity).linkForJson("sign_out=1"), activity.findViewById(R.id.MainActivityProgressBar)).execute();
             }
             (new Timer()).schedule(new TimerTask() {
                 @Override

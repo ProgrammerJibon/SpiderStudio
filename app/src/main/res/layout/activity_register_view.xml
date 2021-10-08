@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentBottom="true"
+    tools:targetApi="lollipop"
+    tools:context=".RegisterView">
+    <LinearLayout
+        android:id="@+id/RegisterHeader"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:background="@color/deep_pink"
+        android:divider="@color/dark_pink"
+        android:dividerPadding="1sp"
+        android:elevation="5dp"
+        android:orientation="horizontal"
+        android:paddingStart="15sp"
+        android:showDividers="end"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/loginTitleText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center_vertical"
+            android:letterSpacing="0.1"
+            android:text="@string/register"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/LoginView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/RegisterHeader"
+        android:layout_alignParentBottom="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="100dp">
+
+                <EditText
+                    android:id="@+id/RegisterFName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:drawableStart="@drawable/ic_baseline_text_format_24"
+                    android:drawablePadding="8sp"
+                    android:focusedByDefault="true"
+                    android:hint="@string/first_name"
+                    android:inputType="textPersonName"
+                    android:paddingTop="16sp"
+                    android:paddingBottom="16sp"
+                    android:textColor="@color/dark_pink"
+                    android:textSize="15sp"
+                    tools:targetApi="o" />
+
+                <EditText
+                    android:id="@+id/RegisterLName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:drawableStart="@drawable/ic_baseline_text_format_24"
+                    android:drawablePadding="8sp"
+                    android:focusedByDefault="true"
+                    android:hint="@string/last_name"
+                    android:inputType="textPersonName"
+                    android:paddingTop="16sp"
+                    android:paddingBottom="16sp"
+                    android:textColor="@color/dark_pink"
+                    android:textSize="15sp"
+                    tools:targetApi="o" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:paddingTop="16dp"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_today_24"
+                        android:drawablePadding="8sp"
+                        android:text="@string/date_of_birth"
+                        android:textColor="#888787" />
+
+                    <DatePicker
+                        android:id="@+id/RegisterBirthDayPicker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:calendarTextColor="@color/deep_pink"
+                        android:calendarViewShown="false"
+                        android:datePickerMode="spinner"
+                        tools:targetApi="lollipop" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ShowCountryList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_baseline_map_24"
+                        android:drawablePadding="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:text="@string/select_country_" />
+
+                    <Spinner
+                        android:id="@+id/RegisterCountry"
+                        android:layout_width="0dp"
+                        android:backgroundTint="@color/dark_pink"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:spinnerMode="dialog"
+                        tools:targetApi="o" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ShowCityList"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_baseline_location_city_24"
+                        android:drawablePadding="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:text="@string/select_city" />
+
+                    <Spinner
+                        android:id="@+id/RegisterCity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog"
+                        android:layout_weight="1"
+                        tools:targetApi="o" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/RegisterEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:drawableStart="@drawable/ic_baseline_alternate_email_24"
+                    android:drawablePadding="8sp"
+                    android:focusedByDefault="true"
+                    android:hint="@string/prompt_email"
+                    android:inputType="textEmailAddress"
+                    android:paddingTop="16sp"
+                    android:paddingBottom="16sp"
+                    android:textColor="@color/dark_pink"
+                    android:textSize="15sp"
+                    tools:targetApi="o" />
+
+
+                <EditText
+                    android:id="@+id/RegisterFPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="no"
+                    android:background="@color/transparent"
+                    android:drawableStart="@drawable/ic_outline_vpn_key_24"
+                    android:drawablePadding="8sp"
+                    android:hint="@string/enter_a_strong_password_and_never_share_it"
+                    android:inputType="textPassword"
+                    android:paddingTop="16sp"
+                    android:paddingBottom="16sp"
+                    android:textColor="@color/dark_pink"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/RegisterCPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="no"
+                    android:background="@color/transparent"
+                    android:drawableStart="@drawable/ic_outline_vpn_key_24"
+                    android:drawablePadding="8sp"
+                    android:hint="@string/re_enter_password_never_share_with_us_too"
+                    android:inputType="textPassword"
+                    android:paddingTop="16sp"
+                    android:paddingBottom="16sp"
+                    android:textColor="@color/dark_pink"
+                    android:textSize="15sp" />
+
+
+                <Button
+                    android:id="@+id/Register_SignUp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/dark_pink"
+                    android:padding="1dp"
+                    android:text="@string/register"
+                    android:textColor="@color/deep_pink"
+                    tools:targetApi="lollipop" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="or" />
+
+                <Button
+                    android:id="@+id/LoginViewButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/light_gray"
+                    android:text="@string/login"
+                    android:textColor="@color/gray"
+                    tools:targetApi="lollipop" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50sp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="center"
+                        android:text="@string/can_t_remember_password"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="50sp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/just_ripple"
+                        android:backgroundTint="@color/transparent"
+                        android:text="@string/restore_password"
+                        android:textColor="@color/gray"
+                        android:textSize="11sp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+
+    <ProgressBar
+        android:id="@+id/RegisterProgress"
+        android:layout_width="match_parent"
+        android:layout_height="11sp"
+        android:indeterminate="true"
+        android:layout_below="@+id/RegisterHeader"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:indeterminateTint="@color/dark_pink"
+        tools:targetApi="lollipop" />
+</RelativeLayout>

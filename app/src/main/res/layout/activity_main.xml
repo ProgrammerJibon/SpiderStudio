@@ -92,6 +92,14 @@
                 android:layout_height="match_parent"
                 android:icon="@drawable/ic_baseline_settings_24"/>
         </com.google.android.material.tabs.TabLayout>
+        <ProgressBar
+            android:id="@+id/MainActivityProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="11sp"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_below="@+id/actionMenuView"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/dark_pink"/>
     </RelativeLayout>
 
 

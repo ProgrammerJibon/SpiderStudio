@@ -15,4 +15,6 @@
     <color name="dark_pink">#ffff0077</color>
     <color name="deep_pink">#B50054</color>
     <color name="transparent">#00000000</color>
+    <color name="gray">#535353</color>
+    <color name="light_gray">#EAEAEA</color>
 </resources>

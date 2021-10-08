@@ -3,17 +3,12 @@ package app.jibon.spider;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.os.Process;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.function.Function;
 
 public class CustomTools {
     public Activity activity;
@@ -32,7 +27,7 @@ public class CustomTools {
             new CustomTools(activity).vibrate(50);
             return true;
         }catch (Exception e){
-            Log.e("errnos", "Custom Toast Problem: "+e.toString());
+            Log.e("errnos_ctool_a", "Custom Toast Problem: "+e.toString());
             return false;
         }
     }
@@ -44,14 +39,16 @@ public class CustomTools {
             vibrator.vibrate(Vibrator.VIBRATION_EFFECT_SUPPORT_YES);
             return true;
         }catch (Exception e){
-            Log.e("errnos","Vibrate Problem: "+e.toString());
+            Log.e("errnos_ctool_b","Vibrate Problem: "+e.toString());
             return false;
         }
     }
 
-    public void alert(String messages){
+    public void alert(String title, String messages, int icon){
         AlertDialog.Builder  builder = new AlertDialog.Builder(activity);
-        builder.setTitle(messages)
+        builder.setTitle(title)
+                .setMessage(messages)
+                .setIcon(icon)
                 .setPositiveButton("OK", (dialog, which) -> {
                     dialog.cancel();
                 })

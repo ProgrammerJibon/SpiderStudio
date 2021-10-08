@@ -1,40 +1,23 @@
 package app.jibon.spider;
 
-import android.annotation.SuppressLint;
-import android.app.NotificationManager;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Parcel;
-import android.service.notification.NotificationListenerService;
-import android.service.notification.StatusBarNotification;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.NotificationBuilderWithBuilderAccessor;
-import androidx.core.app.NotificationCompat;
+
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.tabs.TabLayout;
 
-import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
-import app.jibon.spider.Fragments.Home;
-import app.jibon.spider.Fragments.Messages;
-import app.jibon.spider.Fragments.Notification;
-import app.jibon.spider.Fragments.Profile;
 
 public class MainActivity extends FragmentActivity {
 
@@ -50,6 +33,7 @@ public class MainActivity extends FragmentActivity {
         // first open setup
             (new SaveImageFromLink(this, "https://i.pinimg.com/736x/91/75/1f/91751f67c7ee60fc7742ee2e13c657e4.jpg", "profile.png")).execute();
             new NavigationDrawerSettings(this, R.id.nav_drawer);
+            findViewById(R.id.MainActivityProgressBar).setVisibility(View.GONE);
 
         // find view by id
             TabLayout tabLayout = findViewById(R.id.MainActivityViewPager1Tablayout);
@@ -57,6 +41,7 @@ public class MainActivity extends FragmentActivity {
             TextView MainActivityTitleText = findViewById(R.id.MainActivityTitleText);
             ImageView MainActivityMoreButton = findViewById(R.id.MainActivityMoreButton);
             View mainActivityFragment1 = findViewById(R.id.MainActivityViewFragment1);
+            MainActivityTitleText.setText(new Data(this).userId()+" "+new Data(this).userCookie());
 
         // option menu button
             MainActivityMoreButton.setOnClickListener(v->{
@@ -102,7 +87,7 @@ public class MainActivity extends FragmentActivity {
 
 
         }catch (Exception e){
-            Log.e("errnos", e.toString());
+            Log.e("errnos_main_a", e.toString());
         }
 
 

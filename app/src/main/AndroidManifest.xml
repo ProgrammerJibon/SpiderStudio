@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="app.jibon.spider"
-     >
+    package="app.jibon.spider">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -27,12 +26,16 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
+        android:debuggable="false"
         android:icon="@mipmap/ic_launcher"
         android:label="SPIDER"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.Spider"
-        tools:ignore="AllowBackup">
+        tools:ignore="AllowBackup,HardcodedDebugMode">
+        <activity
+            android:name=".RegisterView"
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true" />

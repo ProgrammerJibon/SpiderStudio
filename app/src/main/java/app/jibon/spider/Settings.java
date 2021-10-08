@@ -2,6 +2,7 @@ package app.jibon.spider;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,11 +21,11 @@ public class Settings  {
     public Activity activity;
     public Settings(Activity applicationContext) {
         this.activity = applicationContext;
+        this.preferences = activity.getApplicationContext().getSharedPreferences("USER", Context.MODE_PRIVATE);
     }
 
     public Boolean visualModeSettings(){
         try {
-            preferences= PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
             preferencesEditor= preferences.edit();
             if (preferences.getString("nightMode", "exception").contains("true")){
                 preferencesEditor.putString("nightMode", "false");
@@ -36,28 +37,24 @@ public class Settings  {
             preferencesEditor.apply();
             return setVisualMode();
         }catch (Exception e){
-            Log.e("errno", e.toString());
+            Log.e("errnos_settings_a", e.toString());
             return false;
         }
 
     }
     public Boolean setVisualMode(){
         try {
-            preferences= PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
-            //Log.e("errnos", preferences.getString("nightMode", ""));
             if (preferences.getString("nightMode", "").contains("true")){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                //Log.e("errnos", "Night Mode setted");
                 return true;
             }else if (preferences.getString("nightMode", "").contains("false")){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                //Log.e("errnos", "Night Mode removed");
                 return true;
             }else{
                 return visualModeSettings();
             }
         }catch (Exception e){
-            Log.e("errnos", e.toString());
+            Log.e("errnos_settings_b", e.toString());
             return false;
         }
 
@@ -105,27 +102,43 @@ public class Settings  {
                     .setIcon(R.drawable.ic_baseline_exit_to_app_24);
             builder.create().show();
         }catch (Exception e){
-            Log.e("errnos", e.toString());
+            Log.e("errnos_settings_c", e.toString());
         }
         return true;
     }
 
 
-    public void storedCookie(String... cookies){
-        preferences= PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+    public String storedCookie(String cookies){
         String cookie = "";
-        if (cookies.length > 0){
+        if (cookies != null){
             preferencesEditor = preferences.edit();
-            preferencesEditor.putString("cookie", cookies[0]);
-            preferencesEditor.apply();
+            preferencesEditor.putString("cookie", cookies);
+            preferencesEditor.commit();
         }
         if (!preferences.getString("cookie", "null").equals("null")){
             cookie = preferences.getString("cookie", "null");
         }else{
             preferencesEditor = preferences.edit();
             preferencesEditor.putString("cookie", "null");
-            preferencesEditor.apply();
+            preferencesEditor.commit();
         }
+        return cookie;
+    }
 
+    public String userId(String user) {
+        String user_id = "";
+        if (user != null){
+            preferencesEditor = preferences.edit();
+            preferencesEditor.putString("user_id", user);
+            preferencesEditor.commit();
+        }
+        if (!preferences.getString("user_id", "null").equals("null")){
+            user_id = preferences.getString("user_id", "null");
+        }else{
+            preferencesEditor = preferences.edit();
+            preferencesEditor.putString("user_id", "null");
+            preferencesEditor.commit();
+        }
+        return user_id;
     }
 }
